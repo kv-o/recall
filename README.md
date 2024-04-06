@@ -3,7 +3,7 @@ Command-line flashcards program.
 
 > memorize is currently in development. Expect its behavior to change. Contributions are welcome.
 
-# Usage
+## Usage
 
 Flashcards are a set of key-value pairs stored in a two column [TSV file][1]. memorize accepts the flashcards file path as an argument, and reads the file line by line, prompting the user with the first term in a line, and asking for the corresponding second term.
 
