@@ -8,13 +8,15 @@ import (
 	"strings"
 )
 
-// add option to output incorrect terms to a certain file
-
 var (
 	rflag bool
+	wflag string
 )
 
+// add -o flag to overwrite given file with wrongly
+// answered terms, instead of outputting to wfile
 func init() {
+	flag.StringVar(&wflag, "w", "", "wrongly answered terms output file")
 	flag.BoolVar(&rflag, "r", false, "query with reverse of the flashcard")
 }
 
@@ -38,6 +40,12 @@ func main() {
 		i = 1
 		j = 0
 	}
+	wfile, err := os.OpenFile(wflag, os.O_WRONLY|os.O_CREATE|os.O_TRUNC, 0640)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "memorize: cannot open %s: %v", wflag, err)
+		os.Exit(1)
+	}
+	defer wfile.Close()
 	for terms.Scan() {
 		pair := strings.Split(terms.Text(), "\t")
 		fmt.Printf("%s: ", pair[i])
@@ -47,10 +55,14 @@ func main() {
 			fmt.Println("Correct!")
 		} else {
 			fmt.Println(pair[j])
+			fmt.Fprintln(wfile, terms.Text())
 		}
 	}
 	if err := terms.Err(); err != nil {
 		fmt.Fprintf(os.Stderr, "memorize: error reading %s: %v", flag.Arg(1), err)
 		os.Exit(1)
+	}
+	if wflag == "" {
+		os.Exit(0)
 	}
 }
