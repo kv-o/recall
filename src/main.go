@@ -9,15 +9,15 @@ import (
 )
 
 var (
-	rflag bool
+	bflag bool
 	wflag string
 )
 
 // add -o flag to overwrite given file with wrongly
 // answered terms, instead of outputting to wfile
 func init() {
+	flag.BoolVar(&bflag, "b", false, "query with reverse of the flashcard")
 	flag.StringVar(&wflag, "w", "", "wrongly answered terms output file")
-	flag.BoolVar(&rflag, "r", false, "query with reverse of the flashcard")
 }
 
 func main() {
@@ -36,7 +36,7 @@ func main() {
 	var guess string
 	terms := bufio.NewScanner(file)
 	scanner := bufio.NewScanner(os.Stdin)
-	if rflag {
+	if bflag {
 		i = 1
 		j = 0
 	}
