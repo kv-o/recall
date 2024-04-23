@@ -8,24 +8,24 @@ INVOCATION
 
 DESCRIPTION
     Uses the specified flashcards FILE to test whether the user correctly
-	remembers each term in FILE.
+    remembers each term in FILE.
 	
-	The specified FILE must be a three-column TSV file (see fmt:tab), with each
-	row representing a separate term/flashcard. The first field in a row
-	represents the front-facing side of the flashcard, the second column
-	represents the reverse side of a flashcard, and the third (optional) field
-	represents an important piece of information that is associated with the
-	term but doesn't need to be memorized.
+    The specified FILE must be a three-column TSV file (see fmt:tab), with each
+    row representing a separate term/flashcard. The first field in a row
+    represents the front-facing side of the flashcard, the second column
+    represents the reverse side of a flashcard, and the third (optional) field
+    represents an important piece of information that is associated with the
+    term but doesn't need to be memorized.
 
-	By default, the specified FILE is read through line by line, and the user
-	is prompted with the value of the front-facing side of the flashcard. The
-	user must respond with the value of the reverse of the flashcard. If the
-	user responds correctly, the user is commended with a simple "Correct!"
-	statement. If the user responds incorrectly, the correct response is shown.
-	If the flashcard has a virtual "third side", its value is displayed after
-	either the "Correct!" statement or the reverse of the flashcard.
+    By default, the specified FILE is read through line by line, and the user
+    is prompted with the value of the front-facing side of the flashcard. The
+    user must respond with the value of the reverse of the flashcard. If the
+    user responds correctly, the user is commended with a simple "Correct!"
+    statement. If the user responds incorrectly, the correct response is shown.
+    If the flashcard has a virtual "third side", its value is displayed after
+    either the "Correct!" statement or the reverse of the flashcard.
 
-	This loop continues until the end of the file is reached.
+    This loop continues until the end of the file is reached.
 
 OPTIONS
     -b          Query user with the reverse of the flashcard, and expect its
@@ -33,9 +33,9 @@ OPTIONS
 
     -l          Use FILE as a Leitner learning box. If this option is specified,
                 FILE must be a folder containing a valid terms.tab file. Groups
-				in the Leitner box will be named N.tab where N is a positive
-				integer. This option cannot be used with the -o, -r, or -w
-				options.
+                in the Leitner box will be named N.tab where N is a positive
+                integer. This option cannot be used with the -o, -r, or -w
+                options.
 
     -o          Overwrite FILE with wrongly answered terms, instead of writing
                 them to another file. Unlike the -w option, wrongly answered
@@ -43,7 +43,7 @@ OPTIONS
                 queried. This option cannot be used with the -l or -o options.
 
     -r          Randomize the order in which terms are queried. Cannot be used
-	            with the -l option.
+                with the -l option.
 
     -w WFILE    Write wrongly answered terms to WFILE. This option cannot be
                 used with the -l or -o options.
