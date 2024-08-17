@@ -28,22 +28,22 @@ DESCRIPTION
     This loop continues until the end of the file is reached.
 
 OPTIONS
-    -b          Query user with the reverse of the flashcard, and expect its
-                front-facing side as the answer.
+    -b          Query user with the reverse (the back) of the flashcard, and
+                expect its front-facing side as the answer.
 
     -l          Use FILE as a Leitner learning box. If this option is specified,
                 FILE must be a folder containing a valid terms.tab file. Groups
                 in the Leitner box will be named N.tab where N is a positive
-                integer. This option cannot be used with the -o, -r, or -w
+                integer. This option cannot be used with the -o, -s, or -w
                 options.
 
     -o          Overwrite FILE with wrongly answered terms, instead of writing
                 them to another file. Unlike the -w option, wrongly answered
-                terms will be written to the file after all terms have been
-                queried. This option cannot be used with the -l or -o options.
+                terms will be written to the file only after all terms have been
+                queried. This option cannot be used with the -l or -w options.
 
-    -r          Randomize the order in which terms are queried. Cannot be used
-                with the -l option.
+    -s          Shuffle the flashcard deck before prompting the user, without
+                modifying FILE. Cannot be used with the -l option.
 
     -w WFILE    Write wrongly answered terms to WFILE. This option cannot be
                 used with the -l or -o options.
