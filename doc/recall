@@ -1,10 +1,10 @@
-COMMANDS                                                                MEMORIZE
+COMMANDS                                                                  RECALL
 
 NAME
-    memorize - memorize a set of terms
+    recall - practise active recall of terms
 
 INVOCATION
-    memorize [OPTION ...] FILE
+    recall [OPTION ...] FILE
 
 DESCRIPTION
     Uses the specified flashcards FILE to test whether the user correctly
