@@ -101,6 +101,10 @@ func plain() {
 			}
 		}
 	}
+	if err := lines.Err(); err != nil {
+		fmt.Fprintf(os.Stderr, "recall: cannot read %s: %v\n", flag.Arg(1), err)
+		os.Exit(1)
+	}
 	if sflag {
 		shuffle(terms)
 	}
@@ -108,12 +112,12 @@ func plain() {
 		wfile = file
 		err = file.Truncate(0)
 		if err != nil {
-			fmt.Fprintln(os.Stderr, "recall: error truncating file")
+			fmt.Fprintln(os.Stderr, "recall: cannot truncate file")
 			os.Exit(1)
 		}
 		_, err = file.Seek(0, 0)
 		if err != nil {
-			fmt.Fprintln(os.Stderr, "recall: error seeking start of file")
+			fmt.Fprintln(os.Stderr, "recall: cannot seek start of file")
 			os.Exit(1)
 		}
 	}
@@ -124,10 +128,6 @@ func plain() {
 				fmt.Fprintln(wfile, term)
 			}
 		}
-	}
-	if err := lines.Err(); err != nil {
-		fmt.Fprintf(os.Stderr, "recall: error reading %s: %v\n", flag.Arg(1), err)
-		os.Exit(1)
 	}
 }
 
