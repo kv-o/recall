@@ -1,11 +1,11 @@
-# recall
+# memorize
 Command-line flashcards program.
 
-> recall is currently in development. Expect its behavior to change. Contributions are welcome.
+> memorize is currently in development. Expect its behavior to change. Contributions are welcome.
 
 ## Usage
 
-Flashcards are a set of key-value pairs stored in a two/three column [TSV file][1]. recall accepts the flashcards file path as an argument, and reads the file line by line, prompting the user with the first term in a line, and asking for the corresponding second term.
+Flashcards are a set of key-value pairs stored in a two/three column [TSV file][1]. memorize accepts the flashcards file path as an argument, and reads the file line by line, prompting the user with the first term in a line, and asking for the corresponding second term.
 
 If you have a file called `vocab.tab` that looks like this:
 
@@ -17,10 +17,10 @@ coûter	to cost
 faire des courses	to run errands
 ```
 
-A recall session should look like this:
+A memorize session should look like this:
 
 ```
-$ recall vocab.tab
+$ memorize vocab.tab
 aimer bien: to like
 Correct! [eh-meh byah]
 apporter: to bring

@@ -30,7 +30,7 @@ func shuffle[T any](slice []T) {
 	for i := range slice {
 		randnum, err := rand.Int(rand.Reader, big.NewInt(int64(i+1)))
 		if err != nil {
-			fmt.Fprintln(os.Stderr, "recall: cannot read from rand source")
+			fmt.Fprintln(os.Stderr, "memorize: cannot read from rand source")
 			os.Exit(1)
 		}
 		j := int(randnum.Int64())
@@ -46,7 +46,7 @@ func prompt(scanner *bufio.Scanner, term string) (wrong bool) {
 	var side3 string
 	pair := strings.Split(term, "\t")
 	if len(pair) < 2 {
-		fmt.Fprintf(os.Stderr, "recall: malformed flashcard: %s\n", term)
+		fmt.Fprintf(os.Stderr, "memorize: malformed flashcard: %s\n", term)
 		os.Exit(1)
 	} else if len(pair) > 2 {
 		side3 = pair[2]
@@ -68,7 +68,7 @@ func prompt(scanner *bufio.Scanner, term string) (wrong bool) {
 }
 
 func leitner() {
-	fmt.Fprintln(os.Stderr, "recall: leitner system is unimplemented")
+	fmt.Fprintln(os.Stderr, "memorize: leitner system is unimplemented")
 	os.Exit(1)
 }
 
@@ -76,7 +76,7 @@ func plain() {
 	var wfile *os.File
 	file, err := os.OpenFile(flag.Arg(0), os.O_RDWR, 0640)
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "recall: cannot open %s: %v\n", os.Args[1], err)
+		fmt.Fprintf(os.Stderr, "memorize: cannot open %s: %v\n", os.Args[1], err)
 		os.Exit(1)
 	}
 	defer file.Close()
@@ -86,7 +86,7 @@ func plain() {
 	if wflag != "" {
 		wfile, err = os.OpenFile(wflag, os.O_WRONLY|os.O_CREATE|os.O_TRUNC, 0640)
 		if err != nil {
-			fmt.Fprintf(os.Stderr, "recall: cannot open %s: %v\n", wflag, err)
+			fmt.Fprintf(os.Stderr, "memorize: cannot open %s: %v\n", wflag, err)
 			os.Exit(1)
 		}
 		defer wfile.Close()
@@ -102,7 +102,7 @@ func plain() {
 		}
 	}
 	if err := lines.Err(); err != nil {
-		fmt.Fprintf(os.Stderr, "recall: cannot read %s: %v\n", flag.Arg(1), err)
+		fmt.Fprintf(os.Stderr, "memorize: cannot read %s: %v\n", flag.Arg(1), err)
 		os.Exit(1)
 	}
 	if sflag {
@@ -112,12 +112,12 @@ func plain() {
 		wfile = file
 		err = file.Truncate(0)
 		if err != nil {
-			fmt.Fprintln(os.Stderr, "recall: cannot truncate file")
+			fmt.Fprintln(os.Stderr, "memorize: cannot truncate file")
 			os.Exit(1)
 		}
 		_, err = file.Seek(0, 0)
 		if err != nil {
-			fmt.Fprintln(os.Stderr, "recall: cannot seek start of file")
+			fmt.Fprintln(os.Stderr, "memorize: cannot seek start of file")
 			os.Exit(1)
 		}
 	}
@@ -136,7 +136,7 @@ func main() {
 	lcond := lflag && (oflag || sflag || wflag != "")
 	wcond := oflag && wflag != ""
 	if len(flag.Args()) != 1 || lcond || wcond {
-		fmt.Fprintln(os.Stderr, "recall: invalid invocation")
+		fmt.Fprintln(os.Stderr, "memorize: invalid invocation")
 		os.Exit(1)
 	}
 	if lflag {
